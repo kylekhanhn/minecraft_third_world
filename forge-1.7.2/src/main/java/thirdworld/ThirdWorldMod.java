@@ -1,5 +1,14 @@
 package thirdworld;
 
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler; // used in 1.6.2
 import cpw.mods.fml.common.Mod.Instance;
@@ -40,6 +49,13 @@ public class ThirdWorldMod {
     @EventHandler
     public void load(FMLInitializationEvent event) {
     	proxy.registerRenderers();
+    	
+    	/* Add recipes for crafting */
+    	ItemStack stickStack = new ItemStack(Items.stick);
+    	ItemStack cobbleStack = new ItemStack(Blocks.cobblestone);
+    	
+    	GameRegistry.addRecipe(new ItemStack(itemScythe), "xxx", "  y", " y ",
+    			'x', cobbleStack, 'y', stickStack);
     }
     
     @EventHandler
