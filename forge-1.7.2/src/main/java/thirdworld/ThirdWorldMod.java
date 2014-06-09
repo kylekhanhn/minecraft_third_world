@@ -31,7 +31,7 @@ public class ThirdWorldMod {
 	//Declare the ID for the base mod class
 	public static final String MODID = "ThirdWorldMod";
 
-    // The instance of your mod that Forge uses.
+    // The instance of our mod that Forge uses.
     @Instance(value = ThirdWorldMod.MODID)
     public static ThirdWorldMod instance;
     
@@ -46,7 +46,6 @@ public class ThirdWorldMod {
     /***** Methods *****/
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        // Stub Method
     	itemScythe = new ItemScythe();
     	GameRegistry.registerItem(itemScythe, "scythe");
     }
@@ -70,6 +69,6 @@ public class ThirdWorldMod {
 	 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-    	// Stub Method
+    	// Implement when needed
     }
 }
