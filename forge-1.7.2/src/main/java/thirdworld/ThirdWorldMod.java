@@ -9,6 +9,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.MinecraftForge;
+
+import net.minecraft.entity.monster.*;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import cpw.mods.fml.common.eventhandler.*;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler; // used in 1.6.2
 import cpw.mods.fml.common.Mod.Instance;
@@ -56,8 +61,13 @@ public class ThirdWorldMod {
     	
     	GameRegistry.addRecipe(new ItemStack(itemScythe), "xxx", "  y", " y ",
     			'x', cobbleStack, 'y', stickStack);
+    	
+    	/*Registers the new event handler with the Event Bus and Terrain Generation Bus*/
+    	MinecraftForge.TERRAIN_GEN_BUS.register(new EntityJoinEventHandler()); 
+    	MinecraftForge.EVENT_BUS.register(new EntityJoinEventHandler());
     }
     
+	 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
     	// Stub Method
