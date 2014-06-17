@@ -42,6 +42,16 @@ public class ThirdWorldMod {
     //Including the custom items
     public static ItemScythe itemScythe;
     
+    /*
+     * new crops
+     
+    public static Block Cotton;
+    public static Block Peanuts;
+    
+    public static Item cotton;
+    public static Item peanuts;
+    
+    */
     
     /***** Methods *****/
     @EventHandler
@@ -64,6 +74,22 @@ public class ThirdWorldMod {
     	/*Registers the new event handler with the Event Bus and Terrain Generation Bus*/
     	MinecraftForge.TERRAIN_GEN_BUS.register(new EntityJoinEventHandler()); 
     	MinecraftForge.EVENT_BUS.register(new EntityJoinEventHandler());
+    	
+    	/* ADDING CROPS 
+    	//new crops
+    	Cotton = (new Cotton(449)).setUnlocalizedName("cotton");
+    	//cotton = (new ItemSeedFood(450, 4, 0.3F, Cotton.blockID, Block.tilledField.blockID)).setUnlocalizedName("mystique:")
+    	Peanuts = (new Peanuts(449)).setUnlocalizedName("peanut");
+    	
+    	//new crops - Game Registry Blocks
+    	GameRegistry.registerBlock(Cotton, "Cotton");
+    	GameRegistry.registerBlock(Peanuts, "Peanuts");
+    	
+    	//new crops - Game Registry Items
+    	GameRegistry.registerItem(cotton, "cotton");
+    	GameRegistry.registerItem(peanuts, "peanuts");
+    	
+    	*/
     }
     
 	 
