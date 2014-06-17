@@ -1,4 +1,4 @@
-package com.mod.thirdworldfarm;
+package thirdworld;
 
 import java.util.Calendar;
 
@@ -264,9 +264,9 @@ public class EntityMilitia extends EntityMob implements IRangedAttackMob
 
         if (this.getEquipmentInSlot(4) == null)
         {
-            Calendar calendar = this.worldObj.getCurrentDate();
+          /*  Calendar calendar = this.worldObj.getCurrentDate();*/
 
-            if (calendar.get(2) + 1 == 10 && calendar.get(5) == 31 && this.rand.nextFloat() < 0.25F)
+            if (this.worldObj.getCurrentDate().get(2) + 1 == 10 && this.worldObj.getCurrentDate().get(5) == 31 && this.rand.nextFloat() < 0.25F)
             {
                 this.setCurrentItemOrArmor(4, new ItemStack(this.rand.nextFloat() < 0.1F ? Blocks.torch : Blocks.glowstone));
                 this.equipmentDropChances[4] = 0.0F;
