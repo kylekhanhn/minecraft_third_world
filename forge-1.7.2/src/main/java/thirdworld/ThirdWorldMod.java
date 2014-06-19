@@ -1,19 +1,23 @@
 package thirdworld;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDirt;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemSeedFood;
+import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.MinecraftForge;
-
 import net.minecraft.entity.monster.*;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import cpw.mods.fml.common.eventhandler.*;
-
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler; // used in 1.6.2
 import cpw.mods.fml.common.Mod.Instance;
@@ -42,16 +46,18 @@ public class ThirdWorldMod {
     //Including the custom items
     public static ItemScythe itemScythe;
     
-    /*
-     * new crops
-     
-    public static Block Cotton;
-    public static Block Peanuts;
     
-    public static Item cotton;
-    public static Item peanuts;
+    /*NEW CROPS*/
+    //Peanuts
+    public static Block blockPeanuts;
+    public static Item itemPeanuts;
+   
     
-    */
+    //Cotton
+    public static Block blockCotton;
+    public static Item itemCotton;
+    
+    
     
     /***** Methods *****/
     @EventHandler
@@ -75,21 +81,15 @@ public class ThirdWorldMod {
     	MinecraftForge.TERRAIN_GEN_BUS.register(new EntityJoinEventHandler()); 
     	MinecraftForge.EVENT_BUS.register(new EntityJoinEventHandler());
     	
-    	/* ADDING CROPS 
-    	//new crops
-    	Cotton = (new Cotton(449)).setUnlocalizedName("cotton");
-    	//cotton = (new ItemSeedFood(450, 4, 0.3F, Cotton.blockID, Block.tilledField.blockID)).setUnlocalizedName("mystique:")
-    	Peanuts = (new Peanuts(449)).setUnlocalizedName("peanut");
-    	
+    	/*new crop*/
+    	blockPeanuts = new BlockPeanuts(1018).setBlockName("peanut");
+    	itemPeanuts = new ItemSeedFood(3, 0.5F, blockPeanuts, Block.getBlockFromName("BlockDirt")).setUnlocalizedName("itemPeanuts").setTextureName(MODID + ":" + "peanuts");
+    	blockCotton = new BlockCotton(1019).setBlockName("cotton");
+    	itemCotton = new ItemSeedFood(3, 0.5F, blockCotton, Block.getBlockFromName("BlockDirt")).setUnlocalizedName("itemCotton").setTextureName(MODID + ":" + "cotton");
     	//new crops - Game Registry Blocks
-    	GameRegistry.registerBlock(Cotton, "Cotton");
-    	GameRegistry.registerBlock(Peanuts, "Peanuts");
+    	GameRegistry.registerBlock(blockCotton, "Cotton");
+    	GameRegistry.registerBlock(blockPeanuts, "Peanuts");
     	
-    	//new crops - Game Registry Items
-    	GameRegistry.registerItem(cotton, "cotton");
-    	GameRegistry.registerItem(peanuts, "peanuts");
-    	
-    	*/
     }
     
 	 
@@ -97,4 +97,6 @@ public class ThirdWorldMod {
     public void postInit(FMLPostInitializationEvent event) {
     	// Implement when needed
     }
+    
+    
 }
