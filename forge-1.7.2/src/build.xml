@@ -131,4 +131,21 @@
             <report format="frames" todir="${report.test}"/>
         </junitreport>
     </target>
+
+    <target name="doc" description="generates the code's javadoc">
+        <mkdir dir="${doc}"/>
+        
+        <javadoc
+          destdir="${doc}"
+          author="true"
+          use="true"
+          windowtitle="Javadoc">
+            
+          <fileset dir="${src}">
+            <include name="*/*.java"/>
+          </fileset>
+            
+        </javadoc>
+    </target>
+
 </project>
