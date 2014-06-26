@@ -47,7 +47,7 @@ public class ThirdWorldMod {
     public static ItemScythe itemScythe;
     
     
-    /*NEW CROPS*/
+    /****** Crops *****/
     //Peanuts
     public static Block blockPeanuts;
     public static Item itemPeanuts;

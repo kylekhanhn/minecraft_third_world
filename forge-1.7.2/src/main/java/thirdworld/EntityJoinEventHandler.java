@@ -7,8 +7,13 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import cpw.mods.fml.common.eventhandler.*;
 
 /*A new event handler for catching EntityJoinWorld Events*/
+
 public class EntityJoinEventHandler 
 {
+	/** eventEntityJoin()
+	 * @param EntityJoinWorldEvent an event created when an entity is spawned to the world
+	 * @return void
+	 */
 	/*Method to deal with the event*/
 	@SubscribeEvent
 	public void eventEntityJoin(EntityJoinWorldEvent event)

@@ -141,7 +141,7 @@
           use="true"
           windowtitle="Javadoc">
             
-          <fileset dir="${src}">
+          <fileset dir="src/main/java">
             <include name="*/*.java"/>
           </fileset>
             
