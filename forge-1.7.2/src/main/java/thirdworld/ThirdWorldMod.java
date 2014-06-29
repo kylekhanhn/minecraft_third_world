@@ -15,7 +15,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.entity.*;
 import net.minecraft.entity.monster.*;
+import net.minecraft.world.biome.*;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import cpw.mods.fml.common.eventhandler.*;
 import cpw.mods.fml.common.Mod;
@@ -46,6 +48,8 @@ public class ThirdWorldMod {
     //Including the custom items
     public static ItemScythe itemScythe;
     
+    //Including the custom entities
+    public static EntityMilitia entityMilitia;
     
     /****** Crops *****/
     //Peanuts
@@ -64,11 +68,19 @@ public class ThirdWorldMod {
     public void preInit(FMLPreInitializationEvent event) {
     	itemScythe = new ItemScythe();
     	GameRegistry.registerItem(itemScythe, "scythe");
+    	
+    	//register the EntityMilitia
+    	EntityRegistry.registerGlobalEntityID(EntityMilitia.class, "entityMilitia", EntityRegistry.findGlobalUniqueEntityId(), (255 << 16), (255 << 16)+ (200 << 8));
+    	EntityRegistry.registerModEntity(EntityMilitia.class, "entityMilitia", 0, this, 80, 3, true);
     }
     
     @EventHandler
     public void load(FMLInitializationEvent event) {
-    	proxy.registerRenderers();
+    	/* Register mob entities */
+    	EntityRegistry.addSpawn(EntityMilitia.class, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.forest, BiomeGenBase.hell,
+    			BiomeGenBase.jungle, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.plains,
+    			BiomeGenBase.beach);
+    	
     	
     	/* Add recipes for crafting */
     	ItemStack stickStack = new ItemStack(Items.stick);
@@ -90,6 +102,7 @@ public class ThirdWorldMod {
     	GameRegistry.registerBlock(blockCotton, "Cotton");
     	GameRegistry.registerBlock(blockPeanuts, "Peanuts");
     	
+    	proxy.registerRenderers();
     }
     
 	 

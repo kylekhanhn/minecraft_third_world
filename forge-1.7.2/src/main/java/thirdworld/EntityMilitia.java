@@ -59,6 +59,7 @@ public class EntityMilitia extends EntityMob implements IRangedAttackMob
         {
             this.setCombatTask();
         }
+        
     }
 
     protected void applyEntityAttributes()
