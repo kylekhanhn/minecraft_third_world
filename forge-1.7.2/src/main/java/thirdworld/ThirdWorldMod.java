@@ -51,15 +51,15 @@ public class ThirdWorldMod {
     //Including the custom entities
     public static EntityMilitia entityMilitia;
     
-    /****** Crops *****/
+    /*NEW CROPS*/
     //Peanuts
     public static Block blockPeanuts;
-    public static Item itemPeanuts;
-   
+    public static Item itemPeanuts;    
     
     //Cotton
-    public static Block blockCotton;
-    public static Item itemCotton;
+    public final static Block blockCotton = new BlockCotton();
+    public final static Item itemCotton = new ItemCotton();
+    public static ItemSeedFood seedCotton; 
     
     
     
@@ -68,6 +68,10 @@ public class ThirdWorldMod {
     public void preInit(FMLPreInitializationEvent event) {
     	itemScythe = new ItemScythe();
     	GameRegistry.registerItem(itemScythe, "scythe");
+    	GameRegistry.registerBlock(blockCotton, "cottons");
+    	GameRegistry.registerItem(itemCotton, "cotton");
+    	GameRegistry.
+    	
     	
     	//register the EntityMilitia
     	EntityRegistry.registerGlobalEntityID(EntityMilitia.class, "entityMilitia", EntityRegistry.findGlobalUniqueEntityId(), (255 << 16), (255 << 16)+ (200 << 8));
@@ -101,6 +105,7 @@ public class ThirdWorldMod {
     	//new crops - Game Registry Blocks
     	GameRegistry.registerBlock(blockCotton, "Cotton");
     	GameRegistry.registerBlock(blockPeanuts, "Peanuts");
+    	
     	
     	proxy.registerRenderers();
     }
