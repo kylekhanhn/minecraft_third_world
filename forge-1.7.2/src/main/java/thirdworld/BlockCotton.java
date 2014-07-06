@@ -11,14 +11,14 @@ import net.minecraft.item.Item;
 import net.minecraft.util.*;
 import net.minecraft.world.*;
 
-public class BlockCotton extends BlockBush implements IGrowable{
+public class BlockCotton extends BlockBush implements IGrowable
+{
 	
 	@SideOnly(Side.CLIENT)
 	private IIcon[] field_149867_a;
 	
 	public BlockCotton()
     {
-        // Basic block setup
         this.setBlockName("cottons");
         this.setBlockTextureName("thirdworld:wheat_stage_0");
     }

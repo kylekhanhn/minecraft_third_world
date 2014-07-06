@@ -31,7 +31,8 @@ import cpw.mods.fml.common.registry.*;
 
 /******** This is the base mod class for our mod ********/
 @Mod(modid = ThirdWorldMod.MODID, name="Third World Country", version="0.0")
-public class ThirdWorldMod {
+public class ThirdWorldMod 
+{
 	
 	/****** Attributes *****/
 	//Declare the ID for the base mod class
@@ -53,8 +54,9 @@ public class ThirdWorldMod {
     
     /*NEW CROPS*/
     //Peanuts
-    public static Block blockPeanuts;
-    public static Item itemPeanuts;    
+    public final static Block blockPeanut = new BlockPeanut();
+    public final static Item itemPeanut = new ItemPeanut();
+    public static ItemSeedFood seedPeanut;   
     
     //Cotton
     public final static Block blockCotton = new BlockCotton();
@@ -65,12 +67,14 @@ public class ThirdWorldMod {
     
     /***** Methods *****/
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
+    public void preInit(FMLPreInitializationEvent event) 
+    {
     	itemScythe = new ItemScythe();
     	GameRegistry.registerItem(itemScythe, "scythe");
     	GameRegistry.registerBlock(blockCotton, "cottons");
     	GameRegistry.registerItem(itemCotton, "cotton");
-    	GameRegistry.
+    	GameRegistry.registerItem(itemPeanut, "peanut");
+    	GameRegistry.registerBlock(blockPeanut, "peanuts");
     	
     	
     	//register the EntityMilitia
@@ -79,7 +83,8 @@ public class ThirdWorldMod {
     }
     
     @EventHandler
-    public void load(FMLInitializationEvent event) {
+    public void load(FMLInitializationEvent event) 
+    {
     	/* Register mob entities */
     	EntityRegistry.addSpawn(EntityMilitia.class, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.forest, BiomeGenBase.hell,
     			BiomeGenBase.jungle, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.plains,
@@ -97,22 +102,14 @@ public class ThirdWorldMod {
     	MinecraftForge.TERRAIN_GEN_BUS.register(new EntityJoinEventHandler()); 
     	MinecraftForge.EVENT_BUS.register(new EntityJoinEventHandler());
     	
-    	/*new crop*/
-    	blockPeanuts = new BlockPeanuts(1018).setBlockName("peanut");
-    	itemPeanuts = new ItemSeedFood(3, 0.5F, blockPeanuts, Block.getBlockFromName("BlockDirt")).setUnlocalizedName("itemPeanuts").setTextureName(MODID + ":" + "peanuts");
-    	blockCotton = new BlockCotton(1019).setBlockName("cotton");
-    	itemCotton = new ItemSeedFood(3, 0.5F, blockCotton, Block.getBlockFromName("BlockDirt")).setUnlocalizedName("itemCotton").setTextureName(MODID + ":" + "cotton");
-    	//new crops - Game Registry Blocks
-    	GameRegistry.registerBlock(blockCotton, "Cotton");
-    	GameRegistry.registerBlock(blockPeanuts, "Peanuts");
-    	
     	
     	proxy.registerRenderers();
     }
     
 	 
     @EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
+    public void postInit(FMLPostInitializationEvent event) 
+    {
     	// Implement when needed
     }
     
