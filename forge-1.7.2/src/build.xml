@@ -16,6 +16,7 @@
 	<property name="build.resources" value="build/resources"/>
     <property name="junit.output.dir" value="build/test-results"/>
 	<property name="report.test" value="build/reports/test"/>
+	<property name="documentation" value="build/documentation"/>
     <property name="target" value="1.7"/>
     <property name="source" value="1.7"/>
     <path id="JUnit.classpath">
@@ -133,16 +134,17 @@
     </target>
 
     <target name="doc" description="generates the code's javadoc">
-        <mkdir dir="${doc}"/>
+        <mkdir dir="${documentation}"/>
         
         <javadoc
-          destdir="${doc}"
+          destdir="${documentation}"
           author="true"
           use="true"
           windowtitle="Javadoc">
             
-          <fileset dir="src/main/java">
-            <include name="*/*.java"/>
+          <fileset dir="src/main/java/thirdworld">
+            <include name="*.java"/>
+          	<include name="*/*.java"/>
           </fileset>
             
         </javadoc>

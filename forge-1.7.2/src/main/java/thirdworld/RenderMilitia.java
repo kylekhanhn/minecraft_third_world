@@ -10,18 +10,29 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import net.minecraft.client.renderer.entity.*;
 
+/**
+ * The class used to render the Militia mob
+ */
 @SideOnly(Side.CLIENT)
 public class RenderMilitia extends RenderBiped
 {
+	/** Determines where the texture file is located
+	 */
     private static final ResourceLocation militiaTextures = new ResourceLocation("thirdworld:textures/entities/entitymilitia.png");
-    //private static final ResourceLocation witherSkeletonTextures = new ResourceLocation("thirdworld:entityMilitia");
-    //private static final String __OBFID = "CL_00001023";
 
+    /** Constructor for RenderMilitia
+	 * @param void
+	 * @return void
+	 */
     public RenderMilitia()
     {
         super(new ModelZombie(), 0.5F, 1.0F);
     }
     
+    /** Return the resource location of the militia texture
+     * @param Entity entity
+     * @return ResourceLocation of the militia texture
+	 */
     @Override
     protected ResourceLocation getEntityTexture(Entity par1Entity)
     {

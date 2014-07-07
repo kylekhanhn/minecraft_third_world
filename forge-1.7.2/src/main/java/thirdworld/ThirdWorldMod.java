@@ -29,7 +29,10 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.*;
 
-/******** This is the base mod class for our mod ********/
+/**
+ * This is the base mod class for the Third World Mod
+ * @version 0.1
+ */
 @Mod(modid = ThirdWorldMod.MODID, name="Third World Country", version="0.0")
 public class ThirdWorldMod 
 {
@@ -65,16 +68,27 @@ public class ThirdWorldMod
     
     
     
-    /***** Methods *****/
+    /***************** Methods *******************/
+    
+    /** 
+     * Pre-initialization method. Does things such as registering new objects into the game
+	 */
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) 
     {
     	itemScythe = new ItemScythe();
     	GameRegistry.registerItem(itemScythe, "scythe");
+    	
+    	/*********************************************************************************************/
+    	/***** The crops currently do not work correctly in-game, and thus will be commented out *****/
+    	/*********************************************************************************************/
+    	/*
     	GameRegistry.registerBlock(blockCotton, "cottons");
     	GameRegistry.registerItem(itemCotton, "cotton");
     	GameRegistry.registerItem(itemPeanut, "peanut");
     	GameRegistry.registerBlock(blockPeanut, "peanuts");
+    	*/
+    	/*********************************************************************************************/
     	
     	
     	//register the EntityMilitia
@@ -82,10 +96,20 @@ public class ThirdWorldMod
     	EntityRegistry.registerModEntity(EntityMilitia.class, "entityMilitia", 0, this, 80, 3, true);
     }
     
+    
+    /**
+     * Load method. Does things such as adding spawns of new entities, new recipes, and registering event handlers.
+     * Also call the renderer method from the client proxy
+	 */
     @EventHandler
     public void load(FMLInitializationEvent event) 
     {
     	/* Register mob entities */
+    	//This is for the militia to spawn during day time
+    	EntityRegistry.addSpawn(EntityMilitia.class, 5, 1, 4, EnumCreatureType.creature, BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.forest, BiomeGenBase.hell,
+    			BiomeGenBase.jungle, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.plains,
+    			BiomeGenBase.beach);
+    	//This is for the militia to spawn during night time
     	EntityRegistry.addSpawn(EntityMilitia.class, 3, 1, 3, EnumCreatureType.monster, BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.forest, BiomeGenBase.hell,
     			BiomeGenBase.jungle, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.plains,
     			BiomeGenBase.beach);
@@ -102,11 +126,13 @@ public class ThirdWorldMod
     	MinecraftForge.TERRAIN_GEN_BUS.register(new EntityJoinEventHandler()); 
     	MinecraftForge.EVENT_BUS.register(new EntityJoinEventHandler());
     	
-    	
+    	/* Call the client renderer method */
     	proxy.registerRenderers();
     }
     
-	 
+    /**
+     * Post-initialization method. Current is not implemented
+	 */
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) 
     {

@@ -6,8 +6,9 @@ import net.minecraft.entity.passive.*;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import cpw.mods.fml.common.eventhandler.*;
 
-/*A new event handler for catching EntityJoinWorld Events*/
-
+/**
+ * A new event handler for catching EntityJoinWorld Events
+ */
 public class EntityJoinEventHandler 
 {
 	/** eventEntityJoin()

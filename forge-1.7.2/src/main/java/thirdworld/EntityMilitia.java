@@ -38,12 +38,19 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProviderHell;
 
+/**
+ * The class for Militia mob
+ */
 public class EntityMilitia extends EntityMob implements IRangedAttackMob
 {
     private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 1.0D, 20, 60, 15.0F);
     private EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.2D, false);
     private static final String __OBFID = "CL_00009687";
-
+    
+    /** Constructor for EntityMilitia
+	 * @param par1World World
+	 * @return void
+	 */
     public EntityMilitia(World par1World)
     {
         super(par1World);
@@ -377,7 +384,7 @@ public class EntityMilitia extends EntityMob implements IRangedAttackMob
     }
 
     /**
-     * Sets the held item, or an armor slot. Slot 0 is held item. Slot 1-4 is armor. Params: Item, slot
+     * Sets the held item, or an armor slot. Slot 0 is held item. Slot 1-4 is armor.
      */
     public void setCurrentItemOrArmor(int par1, ItemStack par2ItemStack)
     {

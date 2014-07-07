@@ -5,6 +5,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 
+/**
+ * The class for Scythe item
+ */
 public class ItemScythe extends Item 
 {	
 	/** Constructor for ItemScythe
