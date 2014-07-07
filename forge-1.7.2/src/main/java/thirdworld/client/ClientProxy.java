@@ -1,18 +1,15 @@
 package thirdworld.client;
 
-import thirdworld.CommonProxy;
-import thirdworld.*;
+import thirdworld.entities.*;
+import thirdworld.mod.*;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.*;
 
-/** The client proxy class
- */
-public class ClientProxy extends CommonProxy {
-	/**
-	 * Register the custom rendering handlers
-	 */
+public class ClientProxy extends CommonProxy 
+{
 	@Override
-	public void registerRenderers() {
+	public void registerRenderers() 
+	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityMilitia.class, new RenderMilitia());
 	}
 }
