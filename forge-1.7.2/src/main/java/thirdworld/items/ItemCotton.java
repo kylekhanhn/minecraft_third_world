@@ -1,6 +1,6 @@
 package thirdworld.items;
 
-import thirdworld.mod.ThirdWorldMod;
+import thirdworld.ThirdWorldMod;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;

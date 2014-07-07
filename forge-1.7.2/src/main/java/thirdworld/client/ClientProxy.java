@@ -1,7 +1,8 @@
 package thirdworld.client;
 
 import thirdworld.entities.*;
-import thirdworld.mod.*;
+import thirdworld.*;
+import thirdworld.entities.*;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.*;
 

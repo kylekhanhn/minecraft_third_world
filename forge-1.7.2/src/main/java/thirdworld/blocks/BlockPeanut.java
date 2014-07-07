@@ -2,7 +2,7 @@ package thirdworld.blocks;
 
 import java.util.Random;
 
-import thirdworld.mod.ThirdWorldMod;
+import thirdworld.ThirdWorldMod;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.*;

@@ -1,5 +1,9 @@
 package thirdworld;
 
+import thirdworld.blocks.*;
+import thirdworld.entities.*;
+import thirdworld.items.*;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.init.Blocks;
