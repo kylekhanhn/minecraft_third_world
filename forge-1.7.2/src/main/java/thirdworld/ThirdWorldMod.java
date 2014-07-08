@@ -70,7 +70,8 @@ public class ThirdWorldMod
     public final static Item itemCotton = new ItemCotton();
     public static ItemSeedFood seedCotton; 
     
-    
+    public static final Block cotton = (Block)Block.blockRegistry.getObject("cottons");
+    public static final Block peanut = (Block)Block.blockRegistry.getObject("peanuts");
     
     /***************** Methods *******************/
     
@@ -86,12 +87,12 @@ public class ThirdWorldMod
     	/*********************************************************************************************/
     	/***** The crops currently do not work correctly in-game, and thus will be commented out *****/
     	/*********************************************************************************************/
-    	/*
+    	
+    	GameRegistry.registerBlock(blockPeanut, "peanuts");
     	GameRegistry.registerBlock(blockCotton, "cottons");
     	GameRegistry.registerItem(itemCotton, "cotton");
     	GameRegistry.registerItem(itemPeanut, "peanut");
-    	GameRegistry.registerBlock(blockPeanut, "peanuts");
-    	*/
+    	
     	/*********************************************************************************************/
     	
     	
