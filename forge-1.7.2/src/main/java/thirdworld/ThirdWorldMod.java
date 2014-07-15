@@ -3,7 +3,6 @@ package thirdworld;
 import thirdworld.blocks.*;
 import thirdworld.entities.*;
 import thirdworld.items.*;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.init.Blocks;
@@ -13,6 +12,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemSeedFood;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
@@ -21,6 +21,7 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.entity.*;
 import net.minecraft.entity.monster.*;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.world.biome.*;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import cpw.mods.fml.common.eventhandler.*;
@@ -59,19 +60,33 @@ public class ThirdWorldMod
     //Including the custom entities
     public static EntityMilitia entityMilitia;
     
-    /*NEW CROPS*/
+    /***************** Crops *******************/
+    
     //Peanuts
-    public final static Block blockPeanut = new BlockPeanut();
-    public final static Item itemPeanut = new ItemPeanut();
-    public static ItemSeedFood seedPeanut;   
+    public static Block blockPeanutPlant;
+    public static Item itemPeanutSeeds;
+    public static Item itemPeanut; 
+    
+    //Corn
+    public static Block blockCornPlant;
+    public static Item itemCornSeeds;
+    public static Item itemCorn;
+    
+    //Okra
+    public static Block blockOkraPlant;
+    public static Item itemOkraSeeds;
+    public static Item itemOkra; 
     
     //Cotton
-    public final static Block blockCotton = new BlockCotton();
-    public final static Item itemCotton = new ItemCotton();
-    public static ItemSeedFood seedCotton; 
+    public static Block blockCottonPlant;
+    public static Item itemCottonSeeds;
+    public static Item itemCotton;
     
-    public static final Block cotton = (Block)Block.blockRegistry.getObject("cottons");
-    public static final Block peanut = (Block)Block.blockRegistry.getObject("peanuts");
+    //Avocado
+    public static Block blockAvocadoPlant;
+    public static Item itemAvocadoSeeds;
+    public static Item itemAvocado;
+    
     
     /***************** Methods *******************/
     
@@ -85,13 +100,49 @@ public class ThirdWorldMod
     	GameRegistry.registerItem(itemScythe, "scythe");
     	
     	/*********************************************************************************************/
-    	/***** The crops currently do not work correctly in-game, and thus will be commented out *****/
+    	/***** Crops *****/
     	/*********************************************************************************************/
+    	blockPeanutPlant = new CropPeanut().setBlockName("PeanutPlant");
+    	itemPeanutSeeds = new ItemSeeds(blockPeanutPlant, Blocks.farmland).setUnlocalizedName("PeanutSeeds").setTextureName("thirdworld:peanutSeed");
+    	itemPeanut = new ItemFood(4, 0.5F, false).setUnlocalizedName("Peanut").setTextureName("thirdworld:peanut");
     	
-    	GameRegistry.registerBlock(blockPeanut, "peanuts");
-    	GameRegistry.registerBlock(blockCotton, "cottons");
-    	GameRegistry.registerItem(itemCotton, "cotton");
-    	GameRegistry.registerItem(itemPeanut, "peanut");
+    	blockCornPlant = new CropCorn().setBlockName("CornPlant");
+    	itemCornSeeds = new ItemSeeds(blockCornPlant, Blocks.farmland).setUnlocalizedName("CornSeeds").setTextureName("thirdworld:cornSeed");
+    	itemCorn = new ItemFood(4, 0.5F, false).setUnlocalizedName("Corn").setTextureName("thirdworld:corn");
+    	
+    	blockOkraPlant = new CropOkra().setBlockName("OkraPlant");
+    	itemOkraSeeds = new ItemSeeds(blockOkraPlant, Blocks.farmland).setUnlocalizedName("OkraSeeds").setTextureName("thirdworld:okraSeed");
+    	itemOkra = new ItemFood(4, 0.5F, false).setUnlocalizedName("Okra").setTextureName("thirdworld:okra");
+    	
+    	blockCottonPlant = new CropCotton().setBlockName("CottonPlant");
+    	itemCottonSeeds = new ItemSeeds(blockCottonPlant, Blocks.farmland).setUnlocalizedName("CottonSeeds").setTextureName("thirdworld:cottonSeed");
+    	itemCotton = new ItemFood(4, 0.5F, false).setUnlocalizedName("Cotton").setTextureName("thirdworld:cotton");
+    	
+    	blockAvocadoPlant = new CropAvocado().setBlockName("AvocadoPlant");
+    	itemAvocadoSeeds = new ItemSeeds(blockAvocadoPlant, Blocks.farmland).setUnlocalizedName("AvocadoSeeds").setTextureName("thirdworld:avocadoSeed");
+    	itemAvocado = new ItemFood(4, 0.5F, false).setUnlocalizedName("Avocado").setTextureName("thirdworld:avocado");
+    	
+    	GameRegistry.registerBlock(blockPeanutPlant, "PeanutPlant");
+    	GameRegistry.registerItem(itemPeanutSeeds, "PeanutSeeds");
+    	GameRegistry.registerItem(itemPeanut, "Peanut");
+    	
+    	GameRegistry.registerBlock(blockCornPlant, "CornPlant");
+    	GameRegistry.registerItem(itemCornSeeds, "CornSeeds");
+    	GameRegistry.registerItem(itemCorn, "Corn");
+    	
+    	GameRegistry.registerBlock(blockOkraPlant, "OkraPlant");
+    	GameRegistry.registerItem(itemOkraSeeds, "OkraSeeds");
+    	GameRegistry.registerItem(itemOkra, "Okra");
+    	
+    	GameRegistry.registerBlock(blockCottonPlant, "CottonPlant");
+    	GameRegistry.registerItem(itemCottonSeeds, "CottonSeeds");
+    	GameRegistry.registerItem(itemCotton, "Cotton");
+    	
+    	GameRegistry.registerBlock(blockAvocadoPlant, "AvocadoPlant");
+    	GameRegistry.registerItem(itemAvocadoSeeds, "AvocadoSeeds");
+    	GameRegistry.registerItem(itemAvocado, "Avocado");
+    	
+    	
     	
     	/*********************************************************************************************/
     	
@@ -133,6 +184,7 @@ public class ThirdWorldMod
     	
     	/* Call the client renderer method */
     	proxy.registerRenderers();
+    	
     }
     
     /**
