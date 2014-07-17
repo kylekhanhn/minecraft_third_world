@@ -23,7 +23,7 @@ public class ItemScythe extends ItemTool
 	 * @param void
 	 * @return void
 	 */
-	private static final Set afinityBlocks = Sets.newHashSet(new Block[] {Blocks.wheat, Blocks.cocoa, Blocks.leaves, thirdworld.ThirdWorldMod.peanut, thirdworld.ThirdWorldMod.cotton});
+	private static final Set afinityBlocks = Sets.newHashSet(new Block[] {Blocks.wheat, Blocks.cocoa, Blocks.leaves});
 	
 	public ItemScythe() 
 	{

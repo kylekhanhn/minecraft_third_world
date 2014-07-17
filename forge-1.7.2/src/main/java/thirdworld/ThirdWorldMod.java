@@ -142,7 +142,11 @@ public class ThirdWorldMod
     	GameRegistry.registerItem(itemAvocadoSeeds, "AvocadoSeeds");
     	GameRegistry.registerItem(itemAvocado, "Avocado");
     	
-    	
+    	MinecraftForge.addGrassSeed(new ItemStack(itemPeanutSeeds), 10);
+    	MinecraftForge.addGrassSeed(new ItemStack(itemCornSeeds), 10);
+    	MinecraftForge.addGrassSeed(new ItemStack(itemOkraSeeds), 10);
+    	MinecraftForge.addGrassSeed(new ItemStack(itemCottonSeeds), 10);
+    	MinecraftForge.addGrassSeed(new ItemStack(itemAvocadoSeeds), 10);
     	
     	/*********************************************************************************************/
     	
