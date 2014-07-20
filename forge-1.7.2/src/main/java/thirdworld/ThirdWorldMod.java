@@ -185,6 +185,7 @@ public class ThirdWorldMod
     	/*Registers the new event handler with the Event Bus and Terrain Generation Bus*/
     	MinecraftForge.TERRAIN_GEN_BUS.register(new EntityJoinEventHandler()); 
     	MinecraftForge.EVENT_BUS.register(new EntityJoinEventHandler());
+    	MinecraftForge.EVENT_BUS.register(new DiseaseEventHandler());
     	
     	/* Call the client renderer method */
     	proxy.registerRenderers();
