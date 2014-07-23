@@ -18,6 +18,7 @@ import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.entity.*;
 import net.minecraft.entity.monster.*;
@@ -56,6 +57,7 @@ public class ThirdWorldMod
     
     //Including the custom items
     public static ItemScythe itemScythe;
+    public static ItemBlindMedicine itemBlindMedicine;
     
     //Including the custom entities
     public static EntityMilitia entityMilitia;
@@ -95,9 +97,13 @@ public class ThirdWorldMod
 	 */
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) 
-    {
+    {	
+    	/**** Register custom items ****/
     	itemScythe = new ItemScythe();
     	GameRegistry.registerItem(itemScythe, "scythe");
+    	
+    	itemBlindMedicine = new ItemBlindMedicine();
+    	GameRegistry.registerItem(itemBlindMedicine, "blindMedicine");
     	
     	/*********************************************************************************************/
     	/***** Crops *****/
