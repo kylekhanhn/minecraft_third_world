@@ -1,3 +1,26 @@
 item.itemScythe.name=Scythe
-item.cotton.name=Cotton
 entity.entityMilitia.name=Militia
+
+tile.PeanutPlant.name=Peanut Plant
+item.PeanutSeeds.name=Peanut Seeds
+item.Peanut.name=Peanut
+
+tile.CornPlant.name=Corn Plant
+item.CornSeeds.name=Corn Seeds
+item.Corn.name=Corn
+
+tile.OkraPlant.name=Okra Plant
+item.OkraSeeds.name=Okra Seeds
+item.Okra.name=Okra
+
+tile.CottonPlant.name=Cotton Plant
+item.CottonSeeds.name=Cotton Seeds
+item.Cotton.name=Cotton
+
+tile.AvocadoPlant.name=Avocado Plant
+item.AvocadoSeeds.name=Avocado Seeds
+item.Avocado.name=Avocado
+
+tile.AvocadoPlant.name=Mango Plant
+item.AvocadoSeeds.name=Mango Seeds
+item.Avocado.name=Mango
