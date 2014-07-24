@@ -69,6 +69,11 @@ public class ThirdWorldMod
     public static Item itemPeanutSeeds;
     public static Item itemPeanut; 
     
+    //Mango
+    public static Block blockMangoPlant;
+    public static Item itemMangoSeeds;
+    public static Item itemMango; 
+    
     //Corn
     public static Block blockCornPlant;
     public static Item itemCornSeeds;
@@ -116,6 +121,10 @@ public class ThirdWorldMod
     	itemCornSeeds = new ItemSeeds(blockCornPlant, Blocks.farmland).setUnlocalizedName("CornSeeds").setTextureName("thirdworld:cornSeed");
     	itemCorn = new ItemFood(4, 0.5F, false).setUnlocalizedName("Corn").setTextureName("thirdworld:corn");
     	
+    	blockMangoPlant = new CropMango().setBlockName("MangoPlant");
+    	itemMangoSeeds = new ItemSeeds(blockMangoPlant, Blocks.farmland).setUnlocalizedName("MangoSeeds").setTextureName("thirdworld:cornSeed");
+    	itemMango = new ItemFood(4, 0.5F, false).setUnlocalizedName("Mango").setTextureName("thirdworld:mango");
+    	
     	blockOkraPlant = new CropOkra().setBlockName("OkraPlant");
     	itemOkraSeeds = new ItemSeeds(blockOkraPlant, Blocks.farmland).setUnlocalizedName("OkraSeeds").setTextureName("thirdworld:okraSeed");
     	itemOkra = new ItemFood(4, 0.5F, false).setUnlocalizedName("Okra").setTextureName("thirdworld:okra");
@@ -131,6 +140,10 @@ public class ThirdWorldMod
     	GameRegistry.registerBlock(blockPeanutPlant, "PeanutPlant");
     	GameRegistry.registerItem(itemPeanutSeeds, "PeanutSeeds");
     	GameRegistry.registerItem(itemPeanut, "Peanut");
+    	
+    	GameRegistry.registerBlock(blockMangoPlant, "MangoPlant");
+    	GameRegistry.registerItem(itemMangoSeeds, "MangoSeeds");
+    	GameRegistry.registerItem(itemMango, "Mango");
     	
     	GameRegistry.registerBlock(blockCornPlant, "CornPlant");
     	GameRegistry.registerItem(itemCornSeeds, "CornSeeds");
@@ -149,6 +162,7 @@ public class ThirdWorldMod
     	GameRegistry.registerItem(itemAvocado, "Avocado");
     	
     	MinecraftForge.addGrassSeed(new ItemStack(itemPeanutSeeds), 10);
+    	MinecraftForge.addGrassSeed(new ItemStack(itemMangoSeeds), 10);
     	MinecraftForge.addGrassSeed(new ItemStack(itemCornSeeds), 10);
     	MinecraftForge.addGrassSeed(new ItemStack(itemOkraSeeds), 10);
     	MinecraftForge.addGrassSeed(new ItemStack(itemCottonSeeds), 10);
