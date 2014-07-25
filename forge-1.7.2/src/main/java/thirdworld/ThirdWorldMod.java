@@ -1,7 +1,11 @@
 package thirdworld;
 
+import java.util.Random;
+
 import thirdworld.blocks.*;
 import thirdworld.entities.*;
+import thirdworld.eventhandlers.DiseaseEventHandler;
+import thirdworld.eventhandlers.EntityJoinEventHandler;
 import thirdworld.items.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
@@ -24,6 +28,8 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.world.biome.*;
+import net.minecraft.world.gen.structure.StructureBoundingBox;
+import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import cpw.mods.fml.common.eventhandler.*;
 import cpw.mods.fml.common.Mod;
@@ -61,6 +67,9 @@ public class ThirdWorldMod
     
     //Including the custom entities
     public static EntityMilitia entityMilitia;
+    
+    //Instant Houses
+    public static Block blockInstantStructure;
     
     /***************** Crops *******************/
     
@@ -104,36 +113,48 @@ public class ThirdWorldMod
     public void preInit(FMLPreInitializationEvent event) 
     {	
     	/**** Register custom items ****/
+
+    	/*********************************************************************************************/
+    	/***** Scythe *****/
+    	/*********************************************************************************************/
     	itemScythe = new ItemScythe();
     	GameRegistry.registerItem(itemScythe, "scythe");
-    	
+
     	itemBlindMedicine = new ItemBlindMedicine();
     	GameRegistry.registerItem(itemBlindMedicine, "blindMedicine");
+    	
+
+    	/*********************************************************************************************/
+    	/***** Instant Houses *****/
+    	/*********************************************************************************************/
+    	blockInstantStructure = new BlockInstantStructure(Material.clay).setCreativeTab(CreativeTabs.tabBlock).setBlockName("Hut").setBlockTextureName("thirdworld:corn7");
+
+    	GameRegistry.registerBlock(blockInstantStructure, "Hut");
     	
     	/*********************************************************************************************/
     	/***** Crops *****/
     	/*********************************************************************************************/
-    	blockPeanutPlant = new CropPeanut().setBlockName("PeanutPlant");
+    	blockPeanutPlant = new Crop("Peanut").setBlockName("PeanutPlant");
     	itemPeanutSeeds = new ItemSeeds(blockPeanutPlant, Blocks.farmland).setUnlocalizedName("PeanutSeeds").setTextureName("thirdworld:peanutSeed");
     	itemPeanut = new ItemFood(4, 0.5F, false).setUnlocalizedName("Peanut").setTextureName("thirdworld:peanut");
     	
-    	blockCornPlant = new CropCorn().setBlockName("CornPlant");
+    	blockCornPlant = new Crop("Corn").setBlockName("CornPlant");
     	itemCornSeeds = new ItemSeeds(blockCornPlant, Blocks.farmland).setUnlocalizedName("CornSeeds").setTextureName("thirdworld:cornSeed");
     	itemCorn = new ItemFood(4, 0.5F, false).setUnlocalizedName("Corn").setTextureName("thirdworld:corn");
     	
-    	blockMangoPlant = new CropMango().setBlockName("MangoPlant");
+    	blockMangoPlant = new Crop("Mango").setBlockName("MangoPlant");
     	itemMangoSeeds = new ItemSeeds(blockMangoPlant, Blocks.farmland).setUnlocalizedName("MangoSeeds").setTextureName("thirdworld:cornSeed");
     	itemMango = new ItemFood(4, 0.5F, false).setUnlocalizedName("Mango").setTextureName("thirdworld:mango");
     	
-    	blockOkraPlant = new CropOkra().setBlockName("OkraPlant");
+    	blockOkraPlant = new Crop("Okra").setBlockName("OkraPlant");
     	itemOkraSeeds = new ItemSeeds(blockOkraPlant, Blocks.farmland).setUnlocalizedName("OkraSeeds").setTextureName("thirdworld:okraSeed");
     	itemOkra = new ItemFood(4, 0.5F, false).setUnlocalizedName("Okra").setTextureName("thirdworld:okra");
     	
-    	blockCottonPlant = new CropCotton().setBlockName("CottonPlant");
+    	blockCottonPlant = new Crop("Cotton").setBlockName("CottonPlant");
     	itemCottonSeeds = new ItemSeeds(blockCottonPlant, Blocks.farmland).setUnlocalizedName("CottonSeeds").setTextureName("thirdworld:cottonSeed");
     	itemCotton = new ItemFood(4, 0.5F, false).setUnlocalizedName("Cotton").setTextureName("thirdworld:cotton");
     	
-    	blockAvocadoPlant = new CropAvocado().setBlockName("AvocadoPlant");
+    	blockAvocadoPlant = new Crop("Avocado").setBlockName("AvocadoPlant");
     	itemAvocadoSeeds = new ItemSeeds(blockAvocadoPlant, Blocks.farmland).setUnlocalizedName("AvocadoSeeds").setTextureName("thirdworld:avocadoSeed");
     	itemAvocado = new ItemFood(4, 0.5F, false).setUnlocalizedName("Avocado").setTextureName("thirdworld:avocado");
     	
@@ -201,6 +222,8 @@ public class ThirdWorldMod
     	
     	GameRegistry.addRecipe(new ItemStack(itemScythe), "xxx", "  y", " y ",
     			'x', cobbleStack, 'y', stickStack);
+    	
+    	
     	
     	/*Registers the new event handler with the Event Bus and Terrain Generation Bus*/
     	MinecraftForge.TERRAIN_GEN_BUS.register(new EntityJoinEventHandler()); 

@@ -19,11 +19,12 @@ import net.minecraft.entity.EntityLiving;
  */
 public class ItemScythe extends ItemTool 
 {	
+	private static final Set afinityBlocks = Sets.newHashSet(new Block[] {Blocks.wheat, Blocks.cocoa, Blocks.leaves});
+	
 	/** Constructor for ItemScythe
 	 * @param void
 	 * @return void
-	 */
-	private static final Set afinityBlocks = Sets.newHashSet(new Block[] {Blocks.wheat, Blocks.cocoa, Blocks.leaves});
+	 * */
 	
 	public ItemScythe() 
 	{
