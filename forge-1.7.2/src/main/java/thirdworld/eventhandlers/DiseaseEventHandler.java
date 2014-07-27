@@ -1,8 +1,9 @@
 package thirdworld.eventhandlers;
 
 import java.util.Random;
-import thirdworld.items.*;
 
+import thirdworld.ThirdWorldMod;
+import thirdworld.items.*;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.*;
@@ -20,6 +21,8 @@ import net.minecraft.item.ItemStack;
 
 public class DiseaseEventHandler {
 	/*Method to deal with the event*/
+	
+	/** Create a probability of getting blind each time the player interacts with a cow, sheep or pig */
 	@SubscribeEvent
 	public void eventInteract(EntityInteractEvent event)
 	{
@@ -30,8 +33,8 @@ public class DiseaseEventHandler {
 			Random ranNum = new Random();
 			int r = ranNum.nextInt(100);
 			
-			//10% chance of getting blinded by an animal
-			if(r <= 2)
+			//2% chance of getting blinded by an animal
+			if(r < 2)
 			{
 				EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 				PotionEffect newPotion = new PotionEffect(Potion.blindness.id, Integer.MAX_VALUE, 0);
@@ -42,6 +45,7 @@ public class DiseaseEventHandler {
 		}
 	}
 	
+	/** Create a probability of getting blind each time the player hits a cow, sheep or pig */
 	@SubscribeEvent
 	public void eventHit(AttackEntityEvent event)
 	{
@@ -52,8 +56,8 @@ public class DiseaseEventHandler {
 			Random ranNum = new Random();
 			int r = ranNum.nextInt(100);
 			
-			//10% chance of getting blinded by an animal
-			if(r <= 2)
+			//2% chance of getting blinded by an animal
+			if(r < 2)
 			{
 				EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 				PotionEffect newPotion = new PotionEffect(Potion.blindness.id, Integer.MAX_VALUE, 0);
@@ -65,12 +69,24 @@ public class DiseaseEventHandler {
 		}
 	}
 	
-//	@SubscribeEvent
-//	public void eventTryingThings(LivingUpdateEvent event) {
-//		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-//		if (player != null && player.getActivePotionEffect(Potion.blindness) != null
-//				&& player.isInWater()) {
-//			player.removePotionEffect(Potion.blindness.id);
-//		}
-//	}
+	/** If the player has not been in contact with water for 5 minutes, they get drowsy */
+	@SubscribeEvent
+	public void eventGetThirsty(LivingUpdateEvent event) {
+		
+		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+		if (player != null) {
+			if (!player.isInWater()) {
+				if (ThirdWorldMod.thirstTime < 5*60000/60)
+					ThirdWorldMod.thirstTime++;
+				else 
+					player.addPotionEffect(new PotionEffect(Potion.confusion.id, Integer.MAX_VALUE, 0));
+			} else {
+				player.removePotionEffect(Potion.confusion.id);
+				ThirdWorldMod.thirstTime = 0;
+			}
+			
+		}
+		
+	}
+	
 }

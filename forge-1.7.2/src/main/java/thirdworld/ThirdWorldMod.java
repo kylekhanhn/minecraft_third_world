@@ -53,13 +53,16 @@ public class ThirdWorldMod
 	//Declare the ID for the base mod class
 	public static final String MODID = "ThirdWorldMod";
 
-    // The instance of our mod that Forge uses.
+    //The instance of our mod that Forge uses.
     @Instance(value = ThirdWorldMod.MODID)
     public static ThirdWorldMod instance;
     
-    // Says where the client and server proxy code is loaded.
+    //Says where the client and server proxy code is loaded.
     @SidedProxy(clientSide="thirdworld.client.ClientProxy", serverSide="thirdworld.CommonProxy")
     public static CommonProxy proxy;
+    
+    //Include global attribute for player thirst time
+    public static int thirstTime = 0;
     
     //Including the custom items
     public static ItemScythe itemScythe;
@@ -68,8 +71,6 @@ public class ThirdWorldMod
     //Including the custom entities
     public static EntityMilitia entityMilitia;
     
-    //Instant Houses
-    public static Block blockInstantStructure;
     
     /***************** Crops *******************/
     
@@ -123,13 +124,6 @@ public class ThirdWorldMod
     	itemBlindMedicine = new ItemBlindMedicine();
     	GameRegistry.registerItem(itemBlindMedicine, "blindMedicine");
     	
-
-    	/*********************************************************************************************/
-    	/***** Instant Houses *****/
-    	/*********************************************************************************************/
-    	blockInstantStructure = new BlockInstantStructure(Material.clay).setCreativeTab(CreativeTabs.tabBlock).setBlockName("Hut").setBlockTextureName("thirdworld:corn7");
-
-    	GameRegistry.registerBlock(blockInstantStructure, "Hut");
     	
     	/*********************************************************************************************/
     	/***** Crops *****/
