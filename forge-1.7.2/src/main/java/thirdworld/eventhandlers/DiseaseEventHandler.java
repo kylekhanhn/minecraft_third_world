@@ -76,7 +76,7 @@ public class DiseaseEventHandler {
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		if (player != null) {
 			if (!player.isInWater()) {
-				if (ThirdWorldMod.thirstTime < 5*60000/60)
+				if (ThirdWorldMod.thirstTime < 5*60000)
 					ThirdWorldMod.thirstTime++;
 				else 
 					player.addPotionEffect(new PotionEffect(Potion.confusion.id, Integer.MAX_VALUE, 0));
