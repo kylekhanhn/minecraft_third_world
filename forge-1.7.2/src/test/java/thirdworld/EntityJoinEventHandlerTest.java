@@ -1,7 +1,7 @@
 package thirdworld;
 
 import thirdworld.entities.*;
-
+import thirdworld.eventhandlers.EntityJoinEventHandler;
 import static org.junit.Assert.*;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraft.entity.monster.*;
