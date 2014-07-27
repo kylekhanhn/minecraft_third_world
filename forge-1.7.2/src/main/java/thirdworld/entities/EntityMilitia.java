@@ -1,6 +1,8 @@
 package thirdworld.entities;
 
 import java.util.Calendar;
+import java.util.Random;
+import thirdworld.ThirdWorldMod;
 
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -231,6 +233,16 @@ public class EntityMilitia extends EntityMob implements IRangedAttackMob
         {
             this.dropItem(Items.diamond, 1);
         }
+        
+        // Create a probability of dropping the blind medicine
+        Random ran = new Random();
+        int r = ran.nextInt(5);
+        
+        if (r == 0)
+        {
+        	this.dropItem(ThirdWorldMod.itemBlindMedicine, 1);
+        }
+        
     }
 
     protected void dropRareDrop(int par1)
